@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*----Home Page-----*/
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    margin: 20px;
+}
+.btn{
+    padding: 20px;
+    background-color: #00a692;
+    border-radius: 5px;
+    border-color: #00a692;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #008080;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#box1{
+    background-color: #00a692;
+}
+table tr td{
+    padding: 30px;
+    font-size: 1.5rem;
+}
+body{
+    margin-top: 180px;
+    font-family: 'Estonia', cursive;
+    font-family: 'Slabo 27px', serif;
+}
+.in1{
+    background-color: #00a692;;
+}
+.in2{
+    background-color: #008080;
+}
+td:hover{
+    background-color: #3ecfbe;
+}
+.boxx img{
+    height: 400px;
+}

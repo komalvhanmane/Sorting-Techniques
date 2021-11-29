@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Techniques</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" media="screen and (max-width: 1100px)" href="phone.css">
+</head>
+<body>
+    <section id="connect">
+        <i class="fab fa-instagram"></i>
+    </section>
+    <h1 style="text-align: center; font-size: 4rem;">Sorting Techniques</h1>
+    <h3 style="text-align: center;"><span id="note"></span></h3>
+    <section class="options">
+        <div class="box">
+            <input type="button" value="Bubble Sort" class="btn" onclick="bubblesort()">
+        </div>
+        <div class="box">
+            <input type="button" value="Selection Sort" class="btn" onclick="insertionsort()">
+
+        </div>
+        <div class="box">
+            <input type="button" value="Insertion Sort" class="btn" onclick="insertionSort()">
+
+        </div>
+      <!--  <div class="box">
+            <input type="button" value="Merge Sort" class="btn" onclick="bubblesort()">
+
+        </div>
+        <div class="box">
+            <input type="button" value="Quick Sort" class="btn" onclick="QuickSort()">
+
+        </div>
+        <div class="box">
+            <input type="submit" value="Print" class="btn" onclick="refresh()">
+        </div>-->
+    </section>
+    <div class="boxx" style="display: flex; align-items: center; justify-content: center;">
+       <a href="#box1"> <img src="button-g9183ccc0a_1280.png" alt=""></a>
+    </div>
+    
+    <h1 style="text-align: center; color: #008080; font-size: 3rem; padding: 20px;"><span id="type-Of-Sorting"></span></h1>
+    <section class="container">
+        <div id="box1">
+            <table border="1">
+                <tr>
+                    <td  class="in2">Given Array</td>
+                    <td class="in1"><span id="arr"></span></td>
+                </tr>
+                <tr>
+                    <td class="in1">Short Information</td>
+                    <td class="in2"><span id="info"></span></td>
+                </tr>
+                <tr>
+                    <td  class="in2">Algorithm</td>
+                    <td class="in1"><span id="algo"></span></td>
+                </tr>
+                <tr>
+                    <td  class="in1">Implementation</td>
+                    <td class="in2"><span id="Passes"></span></td>
+                </tr>
+                <tr>
+                    <td  class="in2">Sorted Array</td>
+                    <td class="in1"><span id="result"></span></td>
+                </tr>
+                <tr>
+                    <td  class="in1">Time Complexity</td>
+                    <td class="in2"><span id="timc"></span></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script>
+        n=parseInt(prompt("Enter the Total Number of Elements int Array"));
+        var arr=[];
+        if(n<0){
+            alert("Negative Numbers are Not Valid");
+        }
+        else if(n==0){
+            alert("Zero also invalid");
+        }
+        else if(n>0){
+            for(var i=0;i<n;i++){
+                arr[i]=parseInt(prompt("Enter the "+(i+1)+" th Number in an array"));
+            }
+        }
+        var note="Note:- Choose the Sorting Technique And Scroll Down :) "
+        document.querySelector("#note").innerHTML=note;
+        var text="";
+        for(var i1=0;i1<n;i1++){
+            text=text+arr[i1]+"&nbsp;";
+        }
+        document.querySelector("#arr").innerHTML=text;
+        //Bubble sort
+        function bubblesort(){
+            var txt="<br>";
+            var isSwapped = false;
+            for(var i=0;i<n;i++){
+                txt =txt +"Pass No. "+(i+1)+"<br>";
+                isSwapped = false;
+                for(var j=0;j<(n-i-1);j++){
+                    if(arr[j]>arr[j+1]){
+                       var temp=arr[j];
+                       arr[j]=arr[j+1];
+                       arr[j+1]=temp;
+                       isSwapped=true;
+                    }
+                }
+                for(var i1=0;i1<n;i1++){
+                       txt=txt+arr[i1]+"&nbsp;";
+                }
+                txt=txt+"<br><br>";
+                if(!isSwapped){
+                    //txt=txt+"Already Sorted Array";
+                    document.querySelector("#Passes").innerHTML=txt;
+                    break;
+                }
+                document.querySelector("#Passes").innerHTML=txt;
+            }
+            var info="<br>";
+            info="Sort the Array By Comparing two adjacent Elements <br>  swaps them if they are not in the intended order. "
+            document.querySelector("#info").innerHTML=info;
+            document.querySelector("#type-Of-Sorting").innerHTML="Bubble Sort";
+            var algo="<br>";
+            algo="Bubble sort compares the element from index 0 and if the 0th index is less than 1st index then the values get swapped <br> and if the 0th index is less than the 1st index then nothing happens."
+            document.querySelector("#algo").innerHTML=algo;
+            var sortedArr="<br>";
+            for(var i1=0;i1<n;i1++){
+                sortedArr=sortedArr+arr[i1] +"&nbsp;";
+            }
+            document.querySelector("#result").innerHTML=sortedArr;
+            var timc="";
+            timc="<br> 1.Worst Case : O(n<sup>2</sup>) <br> 2.Average Case :  O(n<sup>2</sup>) <br> 3.Best Case : O(n) ";
+            document.querySelector("#timc").innerHTML=timc;
+        }
+        //Selection sort
+        function insertionsort(){
+            var txt="<br>";
+            for(var i=0;i<n;i++){
+                txt =txt +"Pass No. "+(i+1)+"<br>";
+                var min=i;
+                for(var j=i+1;j<n;j++){
+                    if(arr[j]<arr[min]){
+                        min=j;
+                    }
+                }
+                if (min != i) {
+             // Swapping the elements
+                    var tmp = arr[i]; 
+                    arr[i] = arr[min];
+                    arr[min] = tmp;      
+                }
+                for(var i1=0;i1<n;i1++){
+                       txt=txt+arr[i1]+"&nbsp;";
+                }
+                txt=txt+"<br><br>";
+            }
+            document.querySelector("#Passes").innerHTML=txt;
+            var info="<br>";
+            info="The selection sort algorithm sorts an array by repeatedly finding the minimum element <br> (considering ascending order) from unsorted part and putting it at the beginning "
+            document.querySelector("#info").innerHTML=info;
+            document.querySelector("#type-Of-Sorting").innerHTML="Selection Sort";
+            var algo="<br>";
+            algo="1. Find the minimum value in the list <br> 2. Swap it with the value in the current position <br> 3. Repeat this process for all the elements until the entire array is sorted";
+            document.querySelector("#algo").innerHTML=algo;
+            var sortedArr="<br>";
+            for(var i1=0;i1<n;i1++){
+                sortedArr=sortedArr+arr[i1] +"&nbsp;";
+            }
+            document.querySelector("#result").innerHTML=sortedArr;
+            var timc="";
+            timc="<br> 1.Worst Case : O(n<sup>2</sup>) <br> 2.Average Case :  O(n<sup>2</sup>) <br> 3.Best Case : O(n<sup>2</sup>) ";
+            document.querySelector("#timc").innerHTML=timc;
+        }
+        //Insertion Sort
+        function insertionSort(){
+            var txt="<br>";
+            for(var i=1;i<n;i++){
+                txt =txt +"Pass No. "+(i)+"<br>";
+                var current=arr[i];
+                var j=i-1;
+                while((j>-1) && current<arr[j]){
+                    arr[j+1]=arr[j];
+                    j--;
+                }
+                arr[j+1]=current;
+                for(var i1=0;i1<n;i1++){
+                       txt=txt+arr[i1]+"&nbsp;";
+                }
+                txt=txt+"<br><br>";
+            }
+            document.querySelector("#Passes").innerHTML=txt;
+            var info="<br>";
+            info="The array is virtually split into a sorted and an unsorted part. Values <br>from the unsorted part are picked and placed at the correct position in the sorted part. "
+            document.querySelector("#info").innerHTML=info;
+            document.querySelector("#type-Of-Sorting").innerHTML="Insertion Sort";
+            var algo="<br>";
+            algo="1.Iterate from arr[1] to arr[n] over the array.  <br> 2. Compare the current element (key) to its predecessor.  <br> 3.  If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.";
+            document.querySelector("#algo").innerHTML=algo;
+            var sortedArr="<br>";
+            for(var i1=0;i1<n;i1++){
+                sortedArr=sortedArr+arr[i1] +"&nbsp;";
+            }
+            document.querySelector("#result").innerHTML=sortedArr;
+            var timc="";
+            timc="<br> 1.Worst Case : O(n<sup>2</sup>) <br> 2.Average Case :  O(n<sup>2</sup>) <br> 3.Best Case : O(n) ";
+            document.querySelector("#timc").innerHTML=timc;
+        }
+        //Quick Sort
+        /*function QuickSort(){
+            var txt="<br>";
+            var end=n-1;
+            var start=0;
+            var pivotValue=arr[end];
+            var pivotIndex=start;
+            for(var i=start;i<end;i++){
+                if(pivotValue>arr[i]){
+                    //swapping
+                    [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+                    pivotIndex++;
+                }
+            }
+            [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]]
+            for(var i1=0;i1<n;i1++){
+                       txt=txt+arr[i1]+"&nbsp;";
+                }
+            txt=txt+"<br>";
+            document.querySelector("#Passes").innerHTML=txt;
+            var info="<br>";
+            info="The array is virtually split into a sorted and an unsorted part. Values <br>from the unsorted part are picked and placed at the correct position in the sorted part. "
+            document.querySelector("#info").innerHTML=info;
+            document.querySelector("#type-Of-Sorting").innerHTML="Insertion Sort";
+            var algo="<br>";
+            algo="1.Iterate from arr[1] to arr[n] over the array.  <br> 2. Compare the current element (key) to its predecessor.  <br> 3.  If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.";
+            document.querySelector("#algo").innerHTML=algo;
+            var sortedArr="<br>";
+            for(var i1=0;i1<n;i1++){
+                sortedArr=sortedArr+arr[i1] +"&nbsp;";
+            }
+            document.querySelector("#result").innerHTML=sortedArr;
+            var timc="";
+            timc="<br> 1.Worst Case : O(n<sup>2</sup>) <br> 2.Average Case :  O(n<sup>2</sup>) <br> 3.Best Case : O(n) ";
+            document.querySelector("#timc").innerHTML=timc;
+        }*/
+        function refresh(){
+            print("Prinitng");
+        }
+
+    </script>
+</body>
+</html>
